@@ -8,9 +8,7 @@
 </head>
 <body>
 
-  <!-- ============================================================
-       HEADER
-       ============================================================ -->
+  <!-- HEADER -->
   <header class="header">
     <div class="header-brand">
       <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -20,6 +18,24 @@
     </div>
 
     <div class="header-actions">
+      <!-- View toggle -->
+      <div class="view-toggle" role="group" aria-label="Changer de vue">
+        <button id="btn-view-board" class="btn-view active" title="Vue Board" aria-label="Vue Board">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="18" rx="1"/>
+            <rect x="14" y="3" width="7" height="12" rx="1"/>
+          </svg>
+        </button>
+        <button id="btn-view-list" class="btn-view" title="Vue Liste" aria-label="Vue Liste">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="7" height="7" rx="1"/>
+            <rect x="14" y="3" width="7" height="7" rx="1"/>
+            <rect x="3" y="14" width="7" height="7" rx="1"/>
+            <rect x="14" y="14" width="7" height="7" rx="1"/>
+          </svg>
+        </button>
+      </div>
+
       <div class="search-wrapper">
         <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="11" cy="11" r="8"/>
@@ -35,7 +51,7 @@
         />
       </div>
 
-      <button id="btn-export" class="btn-icon" title="Exporter les données (JSON)" aria-label="Exporter">
+      <button id="btn-export" class="btn-icon" title="Exporter les donnees (JSON)" aria-label="Exporter">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
           <polyline points="7 10 12 15 17 10"/>
@@ -43,7 +59,7 @@
         </svg>
       </button>
 
-      <button id="btn-settings" class="btn-icon" title="Paramètres" aria-label="Paramètres">
+      <button id="btn-settings" class="btn-icon" title="Parametres" aria-label="Parametres">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <circle cx="12" cy="12" r="3"/>
           <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
@@ -52,26 +68,9 @@
     </div>
   </header>
 
-  <!-- ============================================================
-       FILTERS BAR
-       ============================================================ -->
+  <!-- FILTERS BAR -->
   <div class="filters-bar">
-    <!-- Category tabs -->
-    <div class="filter-row filter-row-categories">
-      <div id="category-filters" class="category-filters" role="group" aria-label="Filtrer par catégorie">
-        <!-- Injected by JS -->
-      </div>
-    </div>
-
-    <!-- Project filter -->
-    <div class="filter-row filter-row-projects">
-      <div id="project-filters" class="project-filters" role="group" aria-label="Filtrer par projet">
-        <!-- Injected by JS -->
-      </div>
-    </div>
-
-    <!-- Status + sort -->
-    <div class="filter-row filter-row-controls">
+    <div class="filters-bar-inner">
       <div class="status-filters" role="group" aria-label="Filtrer par statut">
         <button class="btn-filter-status active" data-status="all">Tous</button>
         <button class="btn-filter-status" data-status="unread">Non lus</button>
@@ -79,48 +78,40 @@
       </div>
 
       <div class="sort-controls">
-        <label class="sort-label" for="sort-select">Trier</label>
+        <label class="sort-label" for="sort-select">Trier :</label>
         <select id="sort-select" class="sort-select" aria-label="Trier par">
-          <option value="date">Date (récent)</option>
-          <option value="priority">Priorité (haute)</option>
+          <option value="date">Date (recent)</option>
+          <option value="priority">Priorite (haute)</option>
         </select>
       </div>
+
+      <span id="stats-inline" class="stats-inline">0 articles - 0 non lus</span>
     </div>
   </div>
 
-  <!-- ============================================================
-       MAIN CONTENT
-       ============================================================ -->
+  <!-- MAIN CONTENT -->
   <main class="main-content">
     <!-- Empty state -->
     <div id="empty-state" class="empty-state" hidden>
       <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
         <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
       </svg>
-      <p class="empty-title">Aucun article trouvé</p>
+      <p class="empty-title">Aucun article trouve</p>
       <p class="empty-subtitle" id="empty-subtitle">Sauvegardez des pages en cliquant sur l'extension.</p>
     </div>
 
-    <!-- Cards grid -->
-    <div id="cards-grid" class="cards-grid" aria-live="polite" aria-label="Articles sauvegardés">
+    <!-- Board view container -->
+    <div id="board-container" class="board-container" aria-live="polite" aria-label="Kanban board">
+      <!-- Injected by JS -->
+    </div>
+
+    <!-- List view container -->
+    <div id="list-container" class="list-container" hidden aria-live="polite" aria-label="Articles sauvegardes">
       <!-- Injected by JS -->
     </div>
   </main>
 
-  <!-- ============================================================
-       STATS BAR
-       ============================================================ -->
-  <footer class="stats-bar">
-    <span id="stat-total" class="stat-item">0 article</span>
-    <span class="stat-sep">-</span>
-    <span id="stat-unread" class="stat-item stat-unread">0 non lu</span>
-    <span class="stat-sep">-</span>
-    <span id="stat-top" class="stat-item">Top: -</span>
-  </footer>
-
-  <!-- ============================================================
-       SCRIPTS
-       ============================================================ -->
+  <!-- SCRIPTS -->
   <script src="../lib/utils.js"></script>
   <script src="../lib/storage.js"></script>
   <script src="dashboard.js"></script>

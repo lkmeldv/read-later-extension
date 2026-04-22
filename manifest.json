@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Read Later",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "description": "Sauvegardez des articles pour les lire plus tard. Résumé et catégorisation IA automatiques.",
   "permissions": [
     "storage",
