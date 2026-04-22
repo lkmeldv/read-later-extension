@@ -408,6 +408,31 @@ body {
 
 .board-container[hidden] { display: none; }
 
+.kanban-add-column {
+  flex: 0 0 var(--column-width);
+  width: var(--column-width);
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: transparent;
+  border: 2px dashed var(--border);
+  border-radius: 10px;
+  color: var(--text-secondary);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition: border-color 0.15s, color 0.15s, background 0.15s;
+}
+
+.kanban-add-column:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  background: rgba(99, 102, 241, 0.05);
+}
+
 .kanban-column {
   flex: 0 0 var(--column-width);
   width: var(--column-width);

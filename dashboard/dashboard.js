@@ -237,7 +237,17 @@ function renderBoard(articles) {
     columnsHTML += buildColumnHTML(p, p, columnMap[p]);
   });
 
+  // Add new project button
+  columnsHTML += '<div class="kanban-add-column" id="btn-add-column">' +
+    '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>' +
+    '<span>Nouveau projet</span>' +
+    '</div>';
+
   dom.boardContainer.innerHTML = columnsHTML;
+
+  // Bind add column
+  var btnAdd = document.getElementById("btn-add-column");
+  btnAdd.addEventListener("click", handleAddProject);
 
   // Bind events on all board cards
   bindBoardCardEvents();
@@ -646,6 +656,21 @@ async function handleProjectChange(id, projectName) {
     allArticles = allArticles.map(function (a) { return a.id === id ? updated : a; });
     renderAll();
   }
+}
+
+async function handleAddProject() {
+  var name = prompt("Nom du nouveau projet :");
+  if (!name || !name.trim()) return;
+  name = name.trim();
+
+  if (projectsList.includes(name)) {
+    alert("Ce projet existe deja.");
+    return;
+  }
+
+  projectsList.push(name);
+  await saveSettings({ projects: projectsList });
+  renderAll();
 }
 
 async function handleExport() {
