@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read Later - Tableau de bord</title>
+  <link rel="stylesheet" href="dashboard.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       HEADER
+       ============================================================ -->
+  <header class="header">
+    <div class="header-brand">
+      <svg class="header-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span class="header-title">Read Later</span>
+    </div>
+
+    <div class="header-actions">
+      <div class="search-wrapper">
+        <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input
+          type="search"
+          id="search-input"
+          class="search-input"
+          placeholder="Rechercher..."
+          autocomplete="off"
+          aria-label="Rechercher un article"
+        />
+      </div>
+
+      <button id="btn-export" class="btn-icon" title="Exporter les données (JSON)" aria-label="Exporter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+          <polyline points="7 10 12 15 17 10"/>
+          <line x1="12" y1="15" x2="12" y2="3"/>
+        </svg>
+      </button>
+
+      <button id="btn-settings" class="btn-icon" title="Paramètres" aria-label="Paramètres">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="3"/>
+          <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+        </svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- ============================================================
+       FILTERS BAR
+       ============================================================ -->
+  <div class="filters-bar">
+    <!-- Category tabs -->
+    <div class="filter-row filter-row-categories">
+      <div id="category-filters" class="category-filters" role="group" aria-label="Filtrer par catégorie">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+
+    <!-- Project filter -->
+    <div class="filter-row filter-row-projects">
+      <div id="project-filters" class="project-filters" role="group" aria-label="Filtrer par projet">
+        <!-- Injected by JS -->
+      </div>
+    </div>
+
+    <!-- Status + sort -->
+    <div class="filter-row filter-row-controls">
+      <div class="status-filters" role="group" aria-label="Filtrer par statut">
+        <button class="btn-filter-status active" data-status="all">Tous</button>
+        <button class="btn-filter-status" data-status="unread">Non lus</button>
+        <button class="btn-filter-status" data-status="read">Lus</button>
+      </div>
+
+      <div class="sort-controls">
+        <label class="sort-label" for="sort-select">Trier</label>
+        <select id="sort-select" class="sort-select" aria-label="Trier par">
+          <option value="date">Date (récent)</option>
+          <option value="priority">Priorité (haute)</option>
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       MAIN CONTENT
+       ============================================================ -->
+  <main class="main-content">
+    <!-- Empty state -->
+    <div id="empty-state" class="empty-state" hidden>
+      <svg class="empty-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+        <path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/>
+      </svg>
+      <p class="empty-title">Aucun article trouvé</p>
+      <p class="empty-subtitle" id="empty-subtitle">Sauvegardez des pages en cliquant sur l'extension.</p>
+    </div>
+
+    <!-- Cards grid -->
+    <div id="cards-grid" class="cards-grid" aria-live="polite" aria-label="Articles sauvegardés">
+      <!-- Injected by JS -->
+    </div>
+  </main>
+
+  <!-- ============================================================
+       STATS BAR
+       ============================================================ -->
+  <footer class="stats-bar">
+    <span id="stat-total" class="stat-item">0 article</span>
+    <span class="stat-sep">-</span>
+    <span id="stat-unread" class="stat-item stat-unread">0 non lu</span>
+    <span class="stat-sep">-</span>
+    <span id="stat-top" class="stat-item">Top: -</span>
+  </footer>
+
+  <!-- ============================================================
+       SCRIPTS
+       ============================================================ -->
+  <script src="../lib/utils.js"></script>
+  <script src="../lib/storage.js"></script>
+  <script src="dashboard.js"></script>
+</body>
+</html>
