@@ -3,6 +3,33 @@
 Toutes les modifications notables de Read Later sont documentees ici.
 Format base sur [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
+## [1.2.1] - 2026-04-22
+
+### Added
+- Bouton "+ Nouveau projet" directement dans le board (bordure pointillee, clic pour creer)
+- Plus besoin d'aller dans les settings pour ajouter un projet
+
+## [1.2.0] - 2026-04-22
+
+### Added
+- **Dashboard Kanban** : articles organises en colonnes par projet
+- Colonne "Inbox" pour les articles sans projet assigne
+- **Drag and drop** entre colonnes pour reassigner les articles a un projet
+- **Toggle Board / Liste** : switch entre vue Kanban et grille classique
+- Cartes compactes en mode board avec overlay au hover (ouvrir, lu, supprimer)
+- Preference de vue sauvegardee dans localStorage
+- Animation pulsante sur les cartes en cours de traitement IA
+- Indicateur rouge sur les cartes en erreur IA
+
+### Changed
+- Stats integrees dans la barre de filtres (plus de footer separe)
+- Filtres simplifies : statut + tri (categories visibles sur les badges des cartes)
+
+## [1.1.1] - 2026-04-22
+
+### Added
+- Drag and drop des cartes vers les boutons projet dans la barre de filtres
+
 ## [1.1.0] - 2026-04-22
 
 ### Added
@@ -14,8 +41,10 @@ Format base sur [Keep a Changelog](https://keepachangelog.com/en/1.1.0/).
 
 ### Fixed
 - Champ `status` vs `summaryStatus` : les resumes IA s'affichent correctement dans le dashboard
-- Bouton settings du dashboard fonctionnel (remplace openOptionsPage par chrome.tabs.create)
-- Protection XSS sur les URLs importees (bloque javascript: URLs)
+- `host_permissions` ajoute pour OpenRouter (requetes cross-origin en MV3)
+- Service worker : handler setupAutoExport replace dans le onMessage listener
+- Bouton settings du dashboard fonctionnel
+- Protection XSS sur les URLs importees
 - Article fallback (popup) inclut tous les champs requis
 - Badge SEO dans le popup affiche la bonne couleur
 - Null guard sur formatRelativeDate
