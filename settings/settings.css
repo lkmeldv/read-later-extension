@@ -1,0 +1,404 @@
+/* ============================================================
+   Read Later - Settings Page Styles
+   ============================================================ */
+
+:root {
+  --bg: #0f0f23;
+  --surface: #1a1a3e;
+  --surface-hover: #252550;
+  --border: #2a2a5a;
+  --accent: #6366f1;
+  --accent-hover: #818cf8;
+  --danger: #ef4444;
+  --danger-hover: #f87171;
+  --success: #22c55e;
+  --text: #e2e8f0;
+  --text-secondary: #94a3b8;
+  --radius: 8px;
+  --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+[data-theme="light"] {
+  --bg: #f8f9fc;
+  --surface: #ffffff;
+  --surface-hover: #f1f3f9;
+  --border: #e2e5ed;
+  --accent: #4f46e5;
+  --accent-hover: #6366f1;
+  --danger: #dc2626;
+  --danger-hover: #ef4444;
+  --success: #16a34a;
+  --text: #1e293b;
+  --text-secondary: #64748b;
+}
+
+/* ---- Reset ---- */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ---- Base ---- */
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  min-height: 100vh;
+  padding: 32px 16px 48px;
+}
+
+/* ---- Page wrapper ---- */
+.page-wrapper {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ---- Back link ---- */
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--text-secondary);
+  text-decoration: none;
+  font-size: 0.875rem;
+  transition: color 0.15s;
+  width: fit-content;
+}
+
+.back-link svg {
+  width: 16px;
+  height: 16px;
+  flex-shrink: 0;
+}
+
+.back-link:hover,
+.back-link:focus-visible {
+  color: var(--text);
+  outline: none;
+}
+
+/* ---- Page title ---- */
+.page-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.375rem;
+  font-weight: 700;
+  color: var(--text);
+  letter-spacing: -0.01em;
+}
+
+.page-title svg {
+  width: 22px;
+  height: 22px;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* ---- Section ---- */
+.section {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.section-title {
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--text);
+  letter-spacing: 0.01em;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--border);
+}
+
+/* ---- Field ---- */
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.field-hint {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* ---- Input group ---- */
+.input-group {
+  display: flex;
+  gap: 8px;
+  align-items: stretch;
+}
+
+.input-group .input {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ---- Input / Select ---- */
+.input {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 0.875rem;
+  padding: 9px 12px;
+  transition: border-color 0.15s, box-shadow 0.15s;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: var(--text-secondary);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15);
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2394a3b8' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 16px;
+  padding-right: 36px;
+}
+
+/* ---- Buttons ---- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  font-family: var(--font);
+  font-size: 0.875rem;
+  font-weight: 500;
+  padding: 9px 16px;
+  transition: background 0.15s, color 0.15s, opacity 0.15s;
+  white-space: nowrap;
+  text-decoration: none;
+}
+
+.btn svg {
+  width: 15px;
+  height: 15px;
+  flex-shrink: 0;
+}
+
+.btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.btn-sm {
+  padding: 9px 12px;
+  font-size: 0.8125rem;
+}
+
+/* Secondary */
+.btn-secondary {
+  background: var(--surface-hover);
+  color: var(--text);
+  border: 1px solid var(--border);
+}
+
+.btn-secondary:hover:not(:disabled) {
+  background: #2e2e66;
+  border-color: #3a3a70;
+}
+
+/* Accent */
+.btn-accent {
+  background: var(--accent);
+  color: #fff;
+}
+
+.btn-accent:hover:not(:disabled) {
+  background: var(--accent-hover);
+}
+
+/* Danger */
+.btn-danger {
+  background: transparent;
+  color: var(--danger);
+  border: 1px solid var(--danger);
+}
+
+.btn-danger:hover:not(:disabled) {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: var(--danger-hover);
+  color: var(--danger-hover);
+}
+
+/* Danger confirm state */
+.btn-danger.confirm {
+  background: rgba(239, 68, 68, 0.15);
+  animation: pulse-danger 0.8s ease-in-out infinite alternate;
+}
+
+@keyframes pulse-danger {
+  from { border-color: var(--danger); }
+  to   { border-color: var(--danger-hover); }
+}
+
+/* ---- Button row ---- */
+.btn-row {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+/* ---- Status messages ---- */
+.status-msg {
+  font-size: 0.8125rem;
+  border-radius: var(--radius);
+  padding: 8px 12px;
+  line-height: 1.5;
+}
+
+.status-msg.success {
+  background: rgba(34, 197, 94, 0.1);
+  border: 1px solid rgba(34, 197, 94, 0.3);
+  color: var(--success);
+}
+
+.status-msg.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: var(--danger);
+}
+
+/* ---- Danger zone ---- */
+.danger-zone {
+  border-top: 1px solid var(--danger);
+  padding-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.danger-title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--danger);
+}
+
+/* ---- Link ---- */
+.link {
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+.link:hover {
+  text-decoration: underline;
+}
+
+/* ---- Toggle / Checkbox ---- */
+.toggle-label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.875rem;
+  color: var(--text);
+  cursor: pointer;
+}
+
+.toggle-label input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  accent-color: var(--accent);
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+/* ---- Project list ---- */
+.project-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  font-size: 0.875rem;
+}
+
+.project-item-name {
+  color: var(--text);
+}
+
+.project-item-remove {
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8125rem;
+  transition: color 0.15s, background 0.15s;
+}
+
+.project-item-remove:hover {
+  color: var(--danger);
+  background: rgba(239, 68, 68, 0.1);
+}
+
+.project-empty {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  padding: 8px 0;
+}
+
+/* ---- Footer ---- */
+.page-footer {
+  text-align: center;
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  padding-top: 8px;
+}
+
+/* ---- Focus visible global ---- */
+:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}

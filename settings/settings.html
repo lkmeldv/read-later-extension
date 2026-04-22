@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Read Later - Paramètres</title>
+  <link rel="stylesheet" href="settings.css" />
+</head>
+<body>
+
+  <div class="page-wrapper">
+
+    <!-- Back link -->
+    <a id="btn-back" class="back-link" href="#" title="Retour au tableau de bord">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polyline points="15 18 9 12 15 6"/>
+      </svg>
+      Dashboard
+    </a>
+
+    <!-- Page title -->
+    <h1 class="page-title">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="3"/>
+        <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+      </svg>
+      Paramètres
+    </h1>
+
+    <!-- ============================================================
+         SECTION - API OpenRouter
+         ============================================================ -->
+    <section class="section" aria-labelledby="section-api-title">
+      <h2 class="section-title" id="section-api-title">API OpenRouter</h2>
+
+      <div class="field">
+        <label class="field-label" for="api-key-input">Clé API</label>
+        <div class="input-group">
+          <input
+            type="password"
+            id="api-key-input"
+            class="input"
+            placeholder="sk-or-v1-..."
+            autocomplete="off"
+            spellcheck="false"
+            aria-describedby="api-key-hint"
+          />
+          <button id="btn-toggle-key" class="btn btn-secondary btn-sm" type="button" aria-label="Afficher ou masquer la clé API">
+            Afficher
+          </button>
+          <button id="btn-test-key" class="btn btn-accent btn-sm" type="button">
+            Tester
+          </button>
+        </div>
+        <p id="api-key-hint" class="field-hint">
+          Obtenez votre clé sur
+          <a href="https://openrouter.ai/keys" target="_blank" rel="noopener noreferrer" class="link">openrouter.ai/keys</a>
+        </p>
+        <p id="api-status" class="status-msg" aria-live="polite" hidden></p>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="model-select">Modèle IA</label>
+        <select id="model-select" class="input select" aria-label="Choisir le modèle IA">
+          <option value="deepseek/deepseek-chat">DeepSeek Chat (~0.14$/M tokens)</option>
+          <option value="deepseek/deepseek-v3.2">DeepSeek V3.2</option>
+          <option value="anthropic/claude-sonnet-4.6">Claude Sonnet 4.6</option>
+          <option value="anthropic/claude-opus-4.6">Claude Opus 4.6</option>
+        </select>
+        <p class="field-hint">Utilisé pour la catégorisation et le résumé automatiques.</p>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION - Apparence
+         ============================================================ -->
+    <section class="section" aria-labelledby="section-theme-title">
+      <h2 class="section-title" id="section-theme-title">Apparence</h2>
+      <div class="field">
+        <label class="field-label" for="theme-select">Theme</label>
+        <select id="theme-select" class="input select" aria-label="Choisir le theme">
+          <option value="dark">Sombre</option>
+          <option value="light">Clair</option>
+        </select>
+      </div>
+      <div class="field">
+        <label class="field-label">Badge sur l'icone</label>
+        <label class="toggle-label">
+          <input type="checkbox" id="badge-toggle" />
+          <span>Afficher le nombre d'articles non lus sur l'icone de l'extension</span>
+        </label>
+      </div>
+    </section>
+
+    <!-- ============================================================
+         SECTION - Projets
+         ============================================================ -->
+    <section class="section" aria-labelledby="section-projects-title">
+      <h2 class="section-title" id="section-projects-title">Projets</h2>
+      <p class="field-hint" style="margin-bottom:12px">Organisez vos articles par projet. Vous pouvez assigner un projet a chaque article depuis le dashboard.</p>
+      <div class="field">
+        <div class="input-group">
+          <input type="text" id="project-input" class="input" placeholder="Nom du projet..." maxlength="40" />
+          <button id="btn-add-project" class="btn btn-accent btn-sm" type="button">Ajouter</button>
+        </div>
+      </div>
+      <ul id="project-list" class="project-list"></ul>
+    </section>
+
+    <!-- ============================================================
+         SECTION - Données
+         ============================================================ -->
+    <section class="section" aria-labelledby="section-data-title">
+      <h2 class="section-title" id="section-data-title">Données</h2>
+
+      <div class="field">
+        <p class="field-hint">Exportez tous vos articles et paramètres au format JSON, ou importez une sauvegarde existante.</p>
+      </div>
+
+      <div class="field">
+        <label class="field-label" for="export-frequency">Sauvegarde automatique</label>
+        <select id="export-frequency" class="input select">
+          <option value="never">Jamais</option>
+          <option value="daily">Quotidien</option>
+          <option value="weekly">Hebdomadaire</option>
+          <option value="biweekly">Quinzaine</option>
+          <option value="monthly">Mensuel</option>
+        </select>
+        <p class="field-hint">Telecharge automatiquement un export JSON dans votre dossier Telechargements.</p>
+      </div>
+
+      <div class="btn-row">
+        <button id="btn-export" class="btn btn-secondary" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 15 17 10"/>
+            <line x1="12" y1="15" x2="12" y2="3"/>
+          </svg>
+          Exporter JSON
+        </button>
+
+        <button id="btn-import" class="btn btn-secondary" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/>
+            <polyline points="7 10 12 5 17 10"/>
+            <line x1="12" y1="3" x2="12" y2="15"/>
+          </svg>
+          Importer JSON
+        </button>
+        <!-- Hidden file input -->
+        <input type="file" id="file-import" accept=".json" hidden aria-hidden="true" />
+      </div>
+
+      <p id="data-status" class="status-msg" aria-live="polite" hidden></p>
+
+      <!-- Zone de danger -->
+      <div class="danger-zone" role="region" aria-labelledby="danger-title">
+        <h3 class="danger-title" id="danger-title">Zone de danger</h3>
+        <p class="field-hint">Supprime définitivement tous vos articles et paramètres. Cette action est irréversible.</p>
+        <button id="btn-clear" class="btn btn-danger" type="button">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="3 6 5 6 21 6"/>
+            <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+            <path d="M10 11v6"/>
+            <path d="M14 11v6"/>
+            <path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/>
+          </svg>
+          Tout supprimer
+        </button>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+      Read Later v1.0.0
+    </footer>
+
+  </div>
+
+  <!-- Scripts -->
+  <script src="../lib/utils.js"></script>
+  <script src="../lib/storage.js"></script>
+  <script src="../lib/openrouter.js"></script>
+  <script src="settings.js"></script>
+</body>
+</html>
