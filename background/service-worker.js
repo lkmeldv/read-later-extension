@@ -97,7 +97,6 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
     updateBadge().then(() => sendResponse({ success: true }));
     return true;
   }
-});
 
   if (message.action === "setupAutoExport") {
     (async () => {
