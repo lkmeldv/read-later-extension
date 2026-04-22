@@ -245,6 +245,28 @@ function renderProjectTabs(articles) {
       btn.classList.add("active");
       renderAll();
     });
+
+    // Drop target
+    const proj = btn.dataset.project;
+    if (proj && proj !== "all") {
+      btn.addEventListener("dragover", (e) => {
+        e.preventDefault();
+        e.dataTransfer.dropEffect = "move";
+        btn.classList.add("drag-over");
+      });
+      btn.addEventListener("dragleave", () => {
+        btn.classList.remove("drag-over");
+      });
+      btn.addEventListener("drop", (e) => {
+        e.preventDefault();
+        btn.classList.remove("drag-over");
+        const articleId = e.dataTransfer.getData("text/plain");
+        if (articleId) {
+          const newProject = proj === "__none__" ? null : proj;
+          handleProjectChange(articleId, newProject);
+        }
+      });
+    }
   });
 }
 
@@ -299,6 +321,18 @@ function renderCards(articles) {
     if (projectSelect) {
       projectSelect.addEventListener("change", () => handleProjectChange(id, projectSelect.value));
     }
+
+    // Drag start
+    cardEl.setAttribute("draggable", "true");
+    cardEl.addEventListener("dragstart", (e) => {
+      e.dataTransfer.setData("text/plain", id);
+      e.dataTransfer.effectAllowed = "move";
+      cardEl.classList.add("is-dragging");
+    });
+    cardEl.addEventListener("dragend", () => {
+      cardEl.classList.remove("is-dragging");
+      document.querySelectorAll(".btn-filter-project").forEach((b) => b.classList.remove("drag-over"));
+    });
   });
 
   // Favicon error fallback

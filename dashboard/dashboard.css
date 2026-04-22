@@ -626,6 +626,17 @@ body {
 
 .btn-filter-project:hover { border-color: var(--accent); color: var(--text); }
 .btn-filter-project.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+.btn-filter-project.drag-over {
+  border-color: var(--success);
+  background: rgba(34, 197, 94, 0.15);
+  color: var(--success);
+  transform: scale(1.05);
+  transition: all 0.15s;
+}
+
+.card[draggable="true"] { cursor: grab; }
+.card[draggable="true"]:active { cursor: grabbing; }
+.card.is-dragging { opacity: 0.4; transform: scale(0.97); }
 
 .filter-row-projects {
   padding-bottom: 0;
