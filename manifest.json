@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "Read Later",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Sauvegardez des articles pour les lire plus tard. Résumé et catégorisation IA automatiques.",
   "permissions": [
     "storage",
@@ -9,6 +9,9 @@
     "tabs",
     "alarms",
     "downloads"
+  ],
+  "host_permissions": [
+    "https://openrouter.ai/*"
   ],
   "action": {
     "default_popup": "popup/popup.html",
